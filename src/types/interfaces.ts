@@ -76,3 +76,8 @@ export interface DiscoverMovies {
     total_results: number;
     results: BaseMovieProps[];
 }
+
+export interface BaseMovieListProps {
+    movies: BaseMovieProps[];
+    action: (m: BaseMovieProps) => React.ReactNode;
+  }
