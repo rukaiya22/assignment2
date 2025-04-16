@@ -1,12 +1,14 @@
-import React, {useState, useEffect}  from "react"; // replace existing react import
+import React, { useState, useEffect } from "react"; // replace existing react import
 import { useParams } from "react-router-dom";
-import { MovieDetailsProps, MovieImage} from "../types/interfaces";// replace existing MoviePageProps import
+import { MovieDetailsProps, MovieImage } from "../types/interfaces";// replace existing MoviePageProps import
 import MovieHeader from "../components/headerMovie/";
 import MovieDetails from "../components/movieDetails";
 import Grid from "@mui/material/Grid";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
-import { MoviePageProps} from "../types/interfaces";
+import { MoviePageProps } from "../types/interfaces";
+import { getMovie, getMovieImages } from "../api/tmdb-api";
+
 
 const styles = {
   imageListRoot: {
@@ -14,42 +16,31 @@ const styles = {
     flexWrap: "wrap",
     justifyContent: "space-around",
   },
-  gridListTile: { 
+  gridListTile: {
     width: "100%",
     height: "auto",
   },
 
 };
 
-const MoviePage: React.FC= () => {
+const MoviePage: React.FC = () => {
   const { id } = useParams();
   const [movie, setMovie] = useState<MovieDetailsProps>();
   const [images, setImages] = useState<MovieImage[]>([]);
 
   useEffect(() => {
-    fetch(
-      `https://api.themoviedb.org/3/movie/${id}?api_key=${import.meta.env.VITE_TMDB_KEY}`
-    )
-      .then((res) => {
-        return res.json();
-      })
-      .then((movie) => {
-        // console.log(movie)
-        setMovie(movie);
-      });
+    getMovie(id ?? "").then((movie) => {
+      setMovie(movie);
+    });
   }, [id]);
 
   useEffect(() => {
-    fetch(
-      `https://api.themoviedb.org/3/movie/${id}/images?api_key=${import.meta.env.VITE_TMDB_KEY}`
-    )
-      .then((res) => res.json())
-      .then((json) => json.posters)
-      .then((images) => {
-        setImages(images);
-      });
+    getMovieImages(id ?? "").then((images) => {
+      setImages(images);
+    });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
 
   return (
     <>
@@ -66,10 +57,10 @@ const MoviePage: React.FC= () => {
                       sx={styles.gridListTile}
                       cols={1}
                     >
-                     <img
+                      <img
                         src={`https://image.tmdb.org/t/p/w500/${image.file_path}`}
                         alt={'Image alternative'}
-                      />                    
+                      />
                     </ImageListItem>
                   ))}
                 </ImageList>
