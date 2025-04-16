@@ -9,7 +9,7 @@ import { BaseMovieProps, DiscoverMovies } from "../types/interfaces";
 import { useQuery } from "react-query";
 import Spinner from "../components/spinner";
 import AddToMustWatchIcon from '../components/cardIcons/addToMustWatch'
-import { getUpcomingMovie } from "../api/tmdb-api";
+import { getUpcomingMovies } from "../api/tmdb-api";
 
 const titleFiltering = {
   name: "title",
@@ -23,7 +23,7 @@ const genreFiltering = {
 };
 
 const UpcomingMoviesPage: React.FC = () => {
-  const { data, error, isLoading, isError } = useQuery<DiscoverMovies, Error>("discover", getUpcomingMovie);
+  const { data, error, isLoading, isError } = useQuery<DiscoverMovies, Error>("upcoming", getUpcomingMovies);
     const { filterValues, setFilterValues, filterFunction } = useFiltering(
       [titleFiltering, genreFiltering]
     );
