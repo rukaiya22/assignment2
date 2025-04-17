@@ -15,12 +15,14 @@ export interface BaseMovieProps {
     revenue: number;
     vote_count: number;
     favourite?: boolean;
+    mustWatch?: boolean;
     genre_ids?: number[];
 }
 
 export interface BaseMovieListProps {
     movies: BaseMovieProps[];
     selectFavourite: (movieId: number) => void;  //add this
+    selectMustWatch: (movieId: number) => void; 
 }
 
 export interface MovieDetailsProps extends BaseMovieProps {

@@ -7,6 +7,7 @@ import CardHeader from "@mui/material/CardHeader";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import PlayListAdd from "@mui/icons-material/PlaylistAdd";
 import CalendarIcon from "@mui/icons-material/CalendarTodayTwoTone";
 import StarRateIcon from "@mui/icons-material/StarRate";
 import Grid from "@mui/material/Grid";
@@ -15,6 +16,7 @@ import { BaseMovieProps } from "../../types/interfaces";
 import { Link } from "react-router-dom";
 import Avatar from "@mui/material/Avatar";
 import { MoviesContext } from "../../contexts/moviesContext";
+import { UpcomingMoviesContext } from "../../contexts/upcomingMoviesContext";
 
 
 
@@ -33,19 +35,28 @@ interface MovieCardProps {
 
 const MovieCard: React.FC<MovieCardProps> = ({ movie, action }) => {
   const { favourites, addToFavourites } = useContext(MoviesContext);//NEW
+  const { mustWatch, addToMustWatch } = useContext(UpcomingMoviesContext);//NEW
 
   const isFavourite = favourites.find((id) => id === movie.id) ? true : false;//NEW
+  const isMustWatch = mustWatch.find((id) => id === movie.id) ? true : false;//NEW
 
 
   return (
     <Card sx={styles.card}>
       <CardHeader
         avatar={
-          isFavourite ? (   //CHANGED
-            <Avatar sx={styles.avatar}>
-              <FavoriteIcon />
-            </Avatar>
-          ) : null
+          <>
+            {isMustWatch && (
+              <Avatar sx={styles.avatar}>
+                <PlayListAdd />
+              </Avatar>
+            )}
+            {isFavourite && (
+              <Avatar sx={styles.avatar}>
+                <FavoriteIcon />
+              </Avatar>
+            )}
+          </>
         }
         title={
           <Typography variant="h5" component="p">
