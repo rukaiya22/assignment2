@@ -24,7 +24,7 @@ const styles = {
 };
 
 const MovieHeader: React.FC<MovieDetailsProps> = (movie) => {
-
+console.log(movie);
   return (
     <Paper component="div" sx={styles.root}>
       <IconButton aria-label="go back">

@@ -9,7 +9,8 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "proxy": "https://u9jm0ky883.execute-api.eu-west-1.amazonaws.com/prod/"
   },
   "dependencies": {
     "@emotion/react": "^11.7.1",

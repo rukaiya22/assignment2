@@ -76,7 +76,8 @@ export interface DiscoverMovies {
     page: number;
     total_pages: number;
     total_results: number;
-    results: BaseMovieProps[];
+    // results: BaseMovieProps[];
+    data: BaseMovieProps[];
 }
 
 export interface BaseMovieListProps {
