@@ -11,6 +11,7 @@ import Menu from "@mui/material/Menu";
 import { useNavigate } from "react-router-dom";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import SignOutButton from "../signOutButton";
 
 const styles = {
     title: {
@@ -32,6 +33,7 @@ const SiteHeader: React.FC = () => {
     { label: "Favorites", path: "/movies/favourites" },
     { label: "Upcoming", path: "/movies/upcoming" },
     { label: "Option 4", path: "/" },
+    { label: "SignOut", path: "/signout" },
   ];
 
   const handleMenuSelect = (pageURL: string) => {
@@ -52,6 +54,7 @@ const SiteHeader: React.FC = () => {
           <Typography variant="h6" sx={styles.title}>
             All you ever wanted to know about Movies!
           </Typography>
+          {/* <SignOutButton /> */}
           {isMobile ? (
             <>
               <IconButton

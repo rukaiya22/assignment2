@@ -19,7 +19,7 @@ export default function SignIn() {
     const data = await res.json();
     if (data.token) {
       signin(data); // Set auth context
-      navigate('/dashboard');
+      // navigate('/dashboard');
     }
   };
 

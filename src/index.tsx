@@ -16,6 +16,7 @@ import SignUp from './pages/signUpPage';
 import SignIn from './pages/signInPage';
 import Confirm from './pages/confirmPage';
 import AuthProvider from "./contexts/authContext";
+import SignOutPage from './pages/signOutPage';
 
 
 const queryClient = new QueryClient({
@@ -52,6 +53,7 @@ const App = () => {
             {/* Protected Routes */}
             <Route element={<PrivateRoute />}>
               <Route path="/movies/favourites" element={<FavouriteMoviesPage />} />
+              <Route path="/signout" element={<SignOutPage />} />
             </Route>
           </Routes>
           </AuthProvider>
