@@ -1,7 +1,7 @@
 import { Button, TextField, Container, Typography } from '@mui/material';
 import { useState } from 'react';
 import { useAuth } from '../contexts/authContext';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
 export default function SignIn() {
@@ -9,6 +9,9 @@ export default function SignIn() {
   const [password, setPassword] = useState('');
   const { signin } = useAuth();
   const navigate = useNavigate();
+
+  const location = useLocation();
+  const from = (location.state as any)?.from?.pathname || '/';
 
   const handleSignin = async () => {
     const res = await fetch('/auth/signin', {
@@ -19,7 +22,7 @@ export default function SignIn() {
     const data = await res.json();
     if (data.token) {
       signin(data); // Set auth context
-      // navigate('/dashboard');
+      navigate(from, { replace: true });
     }
   };
 
