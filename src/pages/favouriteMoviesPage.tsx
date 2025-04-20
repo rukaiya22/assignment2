@@ -73,6 +73,8 @@ const FavouriteMoviesPage: React.FC = () => {
             </>
           );
         }}
+        selectFavourite={() => { }}
+        selectMustWatch={() => { }}
       />
 
       <MovieFilterUI

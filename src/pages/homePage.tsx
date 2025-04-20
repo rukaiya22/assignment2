@@ -58,6 +58,8 @@ const HomePage: React.FC = () => {
         action={(movie: BaseMovieProps) => {
           return <AddToFavouritesIcon {...movie} />
         }}
+        selectFavourite={() => { }}
+        selectMustWatch={() => { }}
       />
       <MovieFilterUI
         onFilterValuesChange={changeFilterValues}

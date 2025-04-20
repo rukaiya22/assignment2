@@ -24,46 +24,48 @@ const genreFiltering = {
 
 const UpcomingMoviesPage: React.FC = () => {
   const { data, error, isLoading, isError } = useQuery<DiscoverMovies, Error>("upcoming", getUpcomingMovies);
-    const { filterValues, setFilterValues, filterFunction } = useFiltering(
-      [titleFiltering, genreFiltering]
-    );
-  
-    if (isLoading) {
-      return <Spinner />;
-    }
-  
-    if (isError) {
-      return <h1>{error.message}</h1>;
-    }
-  
-  
-    const changeFilterValues = (type: string, value: string) => {
-      const changedFilter = { name: type, value: value };
-      const updatedFilterSet =
-        type === "title"
-          ? [changedFilter, filterValues[1]]
-          : [filterValues[0], changedFilter];
-      setFilterValues(updatedFilterSet);
-    };
-  
-    const movies = data ? data.results : [];
-    const displayedMovies = filterFunction(movies);
-  
-    return (
-      <>
-        <PageTemplate
-          title="Discover Movies"
-          movies={displayedMovies}
-          action={(movie: BaseMovieProps) => {
-            return <AddToMustWatchIcon {...movie} />
-          }}
-        />
-        <MovieFilterUI
-          onFilterValuesChange={changeFilterValues}
-          titleFilter={filterValues[0].value}
-          genreFilter={filterValues[1].value}
-        />
-      </>
-    );
+  const { filterValues, setFilterValues, filterFunction } = useFiltering(
+    [titleFiltering, genreFiltering]
+  );
+
+  if (isLoading) {
+    return <Spinner />;
+  }
+
+  if (isError) {
+    return <h1>{error.message}</h1>;
+  }
+
+
+  const changeFilterValues = (type: string, value: string) => {
+    const changedFilter = { name: type, value: value };
+    const updatedFilterSet =
+      type === "title"
+        ? [changedFilter, filterValues[1]]
+        : [filterValues[0], changedFilter];
+    setFilterValues(updatedFilterSet);
   };
+
+  const movies = data ? data.results : [];
+  const displayedMovies = filterFunction(movies);
+
+  return (
+    <>
+      <PageTemplate
+        title="Discover Movies"
+        movies={displayedMovies}
+        action={(movie: BaseMovieProps) => {
+          return <AddToMustWatchIcon {...movie} />
+        }}
+        selectFavourite={() => { }}
+        selectMustWatch={() => { }}
+      />
+      <MovieFilterUI
+        onFilterValuesChange={changeFilterValues}
+        titleFilter={filterValues[0].value}
+        genreFilter={filterValues[1].value}
+      />
+    </>
+  );
+};
 export default UpcomingMoviesPage;

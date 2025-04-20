@@ -1,9 +1,8 @@
 import { Button, TextField, Container, Typography } from '@mui/material';
 import { useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom'; // Import useLocation to retrieve the state
+import { useNavigate } from 'react-router-dom'; // Import useLocation to retrieve the state
 
 export default function ConfirmPage() {
-  const location = useLocation(); // Get the passed state
   const navigate = useNavigate(); // Initialize the useNavigate hook
   const [code, setCode] = useState('');
   const [username, setUsername] = useState('');

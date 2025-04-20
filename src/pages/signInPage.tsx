@@ -15,6 +15,7 @@ export default function SignIn() {
 
   const handleSignin = async () => {
     const res = await fetch('/auth/signin', {
+    // const res = await fetch('https://ttg8a390nd.execute-api.eu-west-1.amazonaws.com/prod/auth/signin', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ username, password }),
