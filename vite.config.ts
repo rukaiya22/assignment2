@@ -12,6 +12,11 @@ export default defineConfig({
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ''),
       },
+      '/auth': {
+        target: 'https://ttg8a390nd.execute-api.eu-west-1.amazonaws.com/prod/auth/',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/auth/, ''),
+      }
     }
   }
 })

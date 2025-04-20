@@ -11,6 +11,11 @@ import { QueryClientProvider, QueryClient } from "react-query";
 import { ReactQueryDevtools } from 'react-query/devtools';
 import MoviesContextProvider from "./contexts/moviesContext";
 import AddMovieReviewPage from './pages/addMovieReviewPage';
+import PrivateRoute from "./components/PrivateRoute";
+import SignUp from './pages/signUpPage';
+import SignIn from './pages/signInPage';
+import Confirm from './pages/confirmPage';
+import AuthProvider from "./contexts/authContext";
 
 
 const queryClient = new QueryClient({
@@ -31,15 +36,25 @@ const App = () => {
       <BrowserRouter>
         <SiteHeader />
         <MoviesContextProvider>
+        <AuthProvider>
           <Routes>
-            <Route path="/movies/favourites" element={<FavouriteMoviesPage />} />
+            {/* <Route path="/movies/favourites" element={<FavouriteMoviesPage />} /> */}
             <Route path="/movies/upcoming" element={<UpcomingMoviesPage />} />
             <Route path="/movies/:id" element={<MoviePage />} />
             <Route path="/" element={<HomePage />} />
             <Route path="*" element={<Navigate to="/" />} />
             <Route path="/reviews/:id" element={<MovieReviewPage />} />
             <Route path="/reviews/form" element={<AddMovieReviewPage />} />
+            <Route path="/signup" element={<SignUp />} />
+            <Route path="/signin" element={<SignIn />} />
+            <Route path="/confirm" element={<Confirm />} />
+
+            {/* Protected Routes */}
+            <Route element={<PrivateRoute />}>
+              <Route path="/movies/favourites" element={<FavouriteMoviesPage />} />
+            </Route>
           </Routes>
+          </AuthProvider>
         </MoviesContextProvider>
       </BrowserRouter>
       <ReactQueryDevtools initialIsOpen={false} />

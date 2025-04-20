@@ -47,8 +47,7 @@ const HomePage: React.FC = () => {
     setFilterValues(updatedFilterSet);
   };
 
-  // const movies = data ? data.results : [];
-  const movies = data ? data.data : [];
+  const movies = data ? data.results : [];
   const displayedMovies = filterFunction(movies);
 
   return (
