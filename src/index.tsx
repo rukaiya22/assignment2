@@ -11,6 +11,7 @@ import { QueryClientProvider, QueryClient } from "react-query";
 import { ReactQueryDevtools } from 'react-query/devtools';
 import MoviesContextProvider from "./contexts/moviesContext";
 import AddMovieReviewPage from './pages/addMovieReviewPage';
+import PopularMoviesPage from "./pages/popularMoviesPage";
 import PrivateRoute from "./components/PrivateRoute";
 import SignUp from './pages/signUpPage';
 import SignIn from './pages/signInPage';
@@ -49,6 +50,13 @@ const App = () => {
             <Route path="/signup" element={<SignUp />} />
             <Route path="/signin" element={<SignIn />} />
             <Route path="/confirm" element={<Confirm />} />
+            
+            <Route path="/movies/popular" element={<PopularMoviesPage />} />
+            {/* <Route path="/actors" element={<ActorsListPage />} /> */}
+            {/* <Route path="/actors/:id" element={<ActorDetailPage />} />
+            <Route path="/tv" element={<TVSeriesListPage />} />
+            <Route path="/tv/:id" element={<TVSeriesDetailPage />} /> */}
+
 
             {/* Protected Routes */}
             <Route element={<PrivateRoute />}>
