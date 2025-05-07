@@ -52,7 +52,7 @@ const UpcomingMoviesPage: React.FC = () => {
   return (
     <>
       <PageTemplate
-        title="Discover Movies"
+        title="Upcoming Movies"
         movies={displayedMovies}
         action={(movie: BaseMovieProps) => {
           return <AddToMustWatchIcon {...movie} />
