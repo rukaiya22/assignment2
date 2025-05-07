@@ -18,6 +18,8 @@ import SignIn from './pages/signInPage';
 import Confirm from './pages/confirmPage';
 import AuthProvider from "./contexts/authContext";
 import SignOutPage from './pages/signOutPage';
+import TopRatedMoviesPage from "./pages/topRatedMoviesPage";
+import NowPlayingMoviesPage from "./pages/nowPlayingMoviesPage";
 
 
 const queryClient = new QueryClient({
@@ -52,6 +54,8 @@ const App = () => {
             <Route path="/confirm" element={<Confirm />} />
             
             <Route path="/movies/popular" element={<PopularMoviesPage />} />
+            <Route path="/movies/toprated" element={<TopRatedMoviesPage />} />
+            <Route path="/movies/nowplaying" element={<NowPlayingMoviesPage />} />
             {/* <Route path="/actors" element={<ActorsListPage />} /> */}
             {/* <Route path="/actors/:id" element={<ActorDetailPage />} />
             <Route path="/tv" element={<TVSeriesListPage />} />
