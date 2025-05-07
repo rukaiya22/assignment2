@@ -10,21 +10,30 @@ const styles = {
   }
 };
 
-const MovieListPageTemplate: React.FC<MovieListPageTemplateProps> = ({ movies, title, action }) => {
+const MovieListPageTemplate: React.FC<MovieListPageTemplateProps> = ({
+  movies, title, action, onBack, onForward, disableBack, disableForward
+}) => {
   return (
     <Grid container sx={styles.root}>
       <Grid item xs={12}>
-        <Header title={title} />
+        {/* Pass the onBack and onForward functions to Header */}
+        <Header
+          title={title}
+          onBack={onBack}
+          onForward={onForward}
+          disableBack={disableBack}
+          disableForward={disableForward}
+        />
       </Grid>
       <Grid item container spacing={5}>
         <MovieList
           action={action}
           movies={movies}
           selectFavourite={() => { }}
-          selectMustWatch={() => { }}>
-        </MovieList>
+          selectMustWatch={() => { }} />
       </Grid>
     </Grid>
   );
 }
+
 export default MovieListPageTemplate;

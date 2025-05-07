@@ -23,6 +23,10 @@ export interface BaseMovieListProps {
     movies: BaseMovieProps[];
     selectFavourite: (movieId: number) => void;  //add this
     selectMustWatch: (movieId: number) => void; 
+    onBack?: () => void;
+    onForward?: () => void;
+    disableBack?: boolean;
+    disableForward?: boolean;
 }
 
 export interface MovieDetailsProps extends BaseMovieProps {
@@ -57,7 +61,12 @@ export type FilterOption = "title" | "genre";
 
 export interface MovieListPageTemplateProps extends BaseMovieListProps {
     title: string;
+    onBack?: () => void;
+    onForward?: () => void;
+    disableBack?: boolean;
+    disableForward?: boolean;
 }
+
 
 export interface Review {
     id: string;
