@@ -8,7 +8,7 @@ export default function SignUp() {
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
-  const url = 'https://tpq8m5l3y8.execute-api.eu-west-1.amazonaws.com/prod/auth/signup';
+  const url = '/auth/signup';
 
   const handleSignup = async () => {
     const res = await fetch(url, {
